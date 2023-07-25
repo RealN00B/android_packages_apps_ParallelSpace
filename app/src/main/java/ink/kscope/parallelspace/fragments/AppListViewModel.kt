@@ -42,12 +42,10 @@ class AppListViewModel(private val context: Application) : AndroidViewModel(cont
         viewModelScope.launch {
             val result = withContext(Dispatchers.Default) {
                 val allApps = SystemInterfaces.getUserApplications(
-                    context.packageManager,
-                    SystemInterfaces.getCurrentUserId(context)
+                    context.packageManager
                 )
                 val dupedApps = SystemInterfaces.getUserApplications(
-                    context.packageManager,
-                    target
+                    context.packageManager
                 )
                 val result = arrayListOf<ItemData>()
                 for (app in allApps) {
